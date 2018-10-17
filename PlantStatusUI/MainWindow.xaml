@@ -1,0 +1,40 @@
+﻿<Window x:Class="PlantStatusUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlantStatusUI"
+        xmlns:wpftoolkit ="http://schemas.microsoft.com/wpf/2008/toolkit"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Grid Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <wpftoolkit:DataGrid Name="StatsDataGrid" Background="Green">
+            
+        </wpftoolkit:DataGrid>
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                
+            </Grid.ColumnDefinitions>
+            <StackPanel  Orientation="Horizontal">
+                <Label Content="Accident Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Margin="5" FontSize="20" Foreground="White" />
+                <DatePicker Name="AccidentDatePicker" FontSize="20" Margin="5" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Label Content="Complaint Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
+                       Margin="5" FontSize="20" Foreground="White" />
+                <DatePicker Name="CustomerComplaintDatePicker" FontSize="20" Margin="5" />
+            </StackPanel>
+        </Grid>
+
+        <Button Grid.Row="2" Name="UpdateStatsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"
+                Content="Update" FontSize="20" />
+    </Grid>
+</Window>
