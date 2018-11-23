@@ -20,14 +20,43 @@ namespace PlantStatusDisplay
     /// </summary>
     public partial class CustomerComplaintDuration : UserControl
     {
-        public CustomerComplaintDuration(DateTime lastCustomerComplaint)
+        public CustomerComplaintDuration(DateTime? lastCustomerComplaint)
         {
             InitializeComponent();
+            DayTextBlock_1.Text = lastCustomerComplaint.Value.Day.ToString("D2").Substring(0, 1);
+            DayTextBlock_2.Text = lastCustomerComplaint.Value.Day.ToString("D2").Substring(1, 1);
 
-            LastComplaintTextBlock.Text = lastCustomerComplaint.ToString("dd/MMM/yyyy");
-            TodayDateTextBlock.Text = DateTime.Now.ToString("dd/MMM/yyyy");
+            MonthTextBlock_1.Text = lastCustomerComplaint.Value.Month.ToString("D2").Substring(0, 1);
+            MonthTextBlock_2.Text = lastCustomerComplaint.Value.Month.ToString("D2").Substring(1, 1);
 
-            DaysTextBlock.Text = (DateTime.Now - lastCustomerComplaint).Days.ToString();
+            YearTextBlock_1.Text = lastCustomerComplaint.Value.Year.ToString().Substring(0, 1);
+            YearTextBlock_2.Text = lastCustomerComplaint.Value.Year.ToString().Substring(1, 1);
+            YearTextBlock_3.Text = lastCustomerComplaint.Value.Year.ToString().Substring(2, 1);
+            YearTextBlock_4.Text = lastCustomerComplaint.Value.Year.ToString().Substring(3, 1);
+
+
+            TodayTextBlock_1.Text = DateTime.Now.Day.ToString("D2").Substring(0, 1);
+            TodayTextBlock_2.Text = DateTime.Now.Day.ToString("D2").Substring(1, 1);
+
+            CurMonthTextBlock_1.Text = DateTime.Now.Month.ToString("D2").Substring(0, 1);
+            CurMonthTextBlock_2.Text = DateTime.Now.Month.ToString("D2").Substring(1, 1);
+
+            YearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
+            YearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
+            YearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
+            YearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
+
+
+
+            DurationTextBlock_1.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(0, 1);
+            DurationTextBlock_2.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(1, 1);
+            DurationTextBlock_3.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(2, 1);
+            DurationTextBlock_4.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(3, 1);
+
+
+
+
+
         }
     }
 }

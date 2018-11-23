@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DataAccess.Entity;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,16 +26,16 @@ namespace PlantStatusDisplay
         NQCTrend NQCTrend;
         OEETrend OEETrend;
         InventoryTrend InventoryTrend;
-        public ChartControl()
+        public ChartControl(ObservableCollection<MonthlyStat> Stats)
         {
 
             InitializeComponent();
 
-            LPATrend = new LPATrend();
+            LPATrend = new LPATrend(Stats);
 
-            NQCTrend = new NQCTrend();
-            OEETrend = new OEETrend();
-            InventoryTrend = new InventoryTrend();
+            NQCTrend = new NQCTrend(Stats);
+            OEETrend = new OEETrend(Stats);
+            InventoryTrend = new InventoryTrend(Stats);
             
             LPAActualTrend.DataContext = LPATrend.LPAActual;
             LPATargetTrend.DataContext = LPATrend.LPATarget;
@@ -54,38 +56,22 @@ namespace PlantStatusDisplay
     public class LPATrend
     {
         public List<String> Months { get; set; }
-        public List<KeyValuePair<String, double>> LPATarget { get; set; }
-        public List<KeyValuePair<String, double>> LPAActual { get; set; }
+        public List<KeyValuePair<String, float?>> LPATarget { get; set; }
+        public List<KeyValuePair<String, float?>> LPAActual { get; set; }
 
-        public LPATrend()
+        public LPATrend(ObservableCollection<MonthlyStat> Stats)
         {
-            LPAActual = new List<KeyValuePair<string, double>>();
-            LPAActual.Add(new KeyValuePair<string, double>("Jan", 78));
-            LPAActual.Add(new KeyValuePair<string, double>("Feb", 79));
-            LPAActual.Add(new KeyValuePair<string, double>("Mar", 80));
-            LPAActual.Add(new KeyValuePair<string, double>("Apr", 75));
-            LPAActual.Add(new KeyValuePair<string, double>("May", 74));
-            LPAActual.Add(new KeyValuePair<string, double>("Jun", 73));
-            LPAActual.Add(new KeyValuePair<string, double>("Jul", 68));
-            LPAActual.Add(new KeyValuePair<string, double>("Aug", 78));
-            LPAActual.Add(new KeyValuePair<string, double>("Sep", 77));
-            LPAActual.Add(new KeyValuePair<string, double>("Oct", 75));
-            LPAActual.Add(new KeyValuePair<string, double>("Nov", 74));
-            LPAActual.Add(new KeyValuePair<string, double>("Dec", 79));
+            LPAActual = new List<KeyValuePair<string, float?>>();
+            LPATarget = new List<KeyValuePair<string, float?>>();
 
-            LPATarget = new List<KeyValuePair<string, double>>();
-            LPATarget.Add(new KeyValuePair<string, double>("Jan", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Feb", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Mar", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Apr", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("May", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Jun", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Jul", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Aug", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Sep", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Oct", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Nov", 80));
-            LPATarget.Add(new KeyValuePair<string, double>("Dec", 80));
+            foreach(MonthlyStat s in Stats)
+            {
+                
+                LPAActual.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Actual));
+                LPATarget.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Target));
+            }
+            
+           
         }
     }
 
@@ -93,38 +79,18 @@ namespace PlantStatusDisplay
     public class NQCTrend
     {
         public List<String> Months { get; set; }
-        public List<KeyValuePair<String, double>> Target { get; set; }
-        public List<KeyValuePair<String, double>> Actual { get; set; }
+        public List<KeyValuePair<String, float?>> Target { get; set; }
+        public List<KeyValuePair<String, float?>> Actual { get; set; }
 
-        public NQCTrend()
+        public NQCTrend(ObservableCollection<MonthlyStat> Stats)
         {
-            Actual = new List<KeyValuePair<string, double>>();
-            Actual.Add(new KeyValuePair<string, double>("Jan", .28));
-            Actual.Add(new KeyValuePair<string, double>("Feb", .25));
-            Actual.Add(new KeyValuePair<string, double>("Mar", .27));
-            Actual.Add(new KeyValuePair<string, double>("Apr", .28));
-            Actual.Add(new KeyValuePair<string, double>("May", .28));
-            Actual.Add(new KeyValuePair<string, double>("Jun", .26));
-            Actual.Add(new KeyValuePair<string, double>("Jul", .27));
-            Actual.Add(new KeyValuePair<string, double>("Aug", .28));
-            Actual.Add(new KeyValuePair<string, double>("Sep", .29));
-            Actual.Add(new KeyValuePair<string, double>("Oct", .29));
-            Actual.Add(new KeyValuePair<string, double>("Nov", .24));
-            Actual.Add(new KeyValuePair<string, double>("Dec", .29));
-
-            Target = new List<KeyValuePair<string, double>>();
-            Target.Add(new KeyValuePair<string, double>("Jan", .29));
-            Target.Add(new KeyValuePair<string, double>("Feb", .29));
-            Target.Add(new KeyValuePair<string, double>("Mar", .29));
-            Target.Add(new KeyValuePair<string, double>("Apr", .29));
-            Target.Add(new KeyValuePair<string, double>("May", .29));
-            Target.Add(new KeyValuePair<string, double>("Jun", .29));
-            Target.Add(new KeyValuePair<string, double>("Jul", .29));
-            Target.Add(new KeyValuePair<string, double>("Aug", .29));
-            Target.Add(new KeyValuePair<string, double>("Sep", .29));
-            Target.Add(new KeyValuePair<string, double>("Oct", .29));
-            Target.Add(new KeyValuePair<string, double>("Nov", .29));
-            Target.Add(new KeyValuePair<string, double>("Dec", .29));
+            Actual = new List<KeyValuePair<string, float?>>();
+            Target = new List<KeyValuePair<string, float?>>();
+            foreach (MonthlyStat s in Stats)
+            {
+                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Actual));
+                Target.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Target));
+            }
         }
     }
 
@@ -132,90 +98,40 @@ namespace PlantStatusDisplay
     public class OEETrend
     {
         public List<String> Months { get; set; }
-        public List<KeyValuePair<String, double>> Target { get; set; }
-        public List<KeyValuePair<String, double>> Actual { get; set; }
+        public List<KeyValuePair<String, float?>> Target { get; set; }
+        public List<KeyValuePair<String, float?>> Actual { get; set; }
 
-        public OEETrend()
+        public OEETrend(ObservableCollection<MonthlyStat> Stats)
         {
-            Actual = new List<KeyValuePair<string, double>>();
-            Actual.Add(new KeyValuePair<string, double>("Jan", 80.8));
-            Actual.Add(new KeyValuePair<string, double>("Feb", 81.5));
-            Actual.Add(new KeyValuePair<string, double>("Mar", 77.3));
-            Actual.Add(new KeyValuePair<string, double>("Apr", 81.5));
-            Actual.Add(new KeyValuePair<string, double>("May", 81.6));
-            Actual.Add(new KeyValuePair<string, double>("Jun", 80.5));
-            Actual.Add(new KeyValuePair<string, double>("Jul", 80.6));
-            Actual.Add(new KeyValuePair<string, double>("Aug", 82));
-            Actual.Add(new KeyValuePair<string, double>("Sep", 79.9));
-            Actual.Add(new KeyValuePair<string, double>("Oct", 78.5));
-            Actual.Add(new KeyValuePair<string, double>("Nov", 81.5));
-            Actual.Add(new KeyValuePair<string, double>("Dec", 80.7));
-
-            Target = new List<KeyValuePair<string, double>>();
-            Target.Add(new KeyValuePair<string, double>("Jan", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Feb", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Mar", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Apr", 83.4));
-            Target.Add(new KeyValuePair<string, double>("May", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Jun", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Jul", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Aug", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Sep", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Oct", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Nov", 83.4));
-            Target.Add(new KeyValuePair<string, double>("Dec", 83.4));
+            Actual = new List<KeyValuePair<string, float?>>();
+            Target = new List<KeyValuePair<string, float?>>();
+            foreach (MonthlyStat s in Stats)
+            {
+                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Actual));
+                Target.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Target));
+            }
         }
     }
 
     public class InventoryTrend
     {
-        public List<KeyValuePair<String, double>> Average { get; set; }
-        public List<KeyValuePair<String, double>> Target { get; set; }
-        public List<KeyValuePair<String, double>> Actual { get; set; }
+        public List<KeyValuePair<String, float?>> Average { get; set; }
+        public List<KeyValuePair<String, float?>> Target { get; set; }
+        public List<KeyValuePair<String, float?>> Actual { get; set; }
 
-        public InventoryTrend()
+        public InventoryTrend(ObservableCollection<MonthlyStat> Stats)
         {
-            Actual = new List<KeyValuePair<string, double>>();
-            Actual.Add(new KeyValuePair<string, double>("Jan", 44));
-            Actual.Add(new KeyValuePair<string, double>("Feb", 42.2));
-            Actual.Add(new KeyValuePair<string, double>("Mar", 47.6));
-            Actual.Add(new KeyValuePair<string, double>("Apr", 44.7));
-            Actual.Add(new KeyValuePair<string, double>("May", 45));
-            Actual.Add(new KeyValuePair<string, double>("Jun", 46));
-            Actual.Add(new KeyValuePair<string, double>("Jul", 45));
-            Actual.Add(new KeyValuePair<string, double>("Aug", 44.5));
-            Actual.Add(new KeyValuePair<string, double>("Sep", 45.8));
-            Actual.Add(new KeyValuePair<string, double>("Oct", 42));
-            Actual.Add(new KeyValuePair<string, double>("Nov", 43.3));
-            Actual.Add(new KeyValuePair<string, double>("Dec", 43.6));
+            Actual = new List<KeyValuePair<string, float?>>();
+            Target = new List<KeyValuePair<string, float?>>();
+            Average = new List<KeyValuePair<string, float?>>();
 
-            Target = new List<KeyValuePair<string, double>>();
-            Target.Add(new KeyValuePair<string, double>("Jan", 40));
-            Target.Add(new KeyValuePair<string, double>("Feb", 40));
-            Target.Add(new KeyValuePair<string, double>("Mar", 40));
-            Target.Add(new KeyValuePair<string, double>("Apr", 40));
-            Target.Add(new KeyValuePair<string, double>("May", 40));
-            Target.Add(new KeyValuePair<string, double>("Jun", 40));
-            Target.Add(new KeyValuePair<string, double>("Jul", 40));
-            Target.Add(new KeyValuePair<string, double>("Aug", 40));
-            Target.Add(new KeyValuePair<string, double>("Sep", 40));
-            Target.Add(new KeyValuePair<string, double>("Oct", 40));
-            Target.Add(new KeyValuePair<string, double>("Nov", 40));
-            Target.Add(new KeyValuePair<string, double>("Dec", 40));
 
-            Average = new List<KeyValuePair<string, double>>();
-            Average.Add(new KeyValuePair<string, double>("Jan", 53.3));
-            Average.Add(new KeyValuePair<string, double>("Feb", 51.9));
-            Average.Add(new KeyValuePair<string, double>("Mar", 51.4));
-            Average.Add(new KeyValuePair<string, double>("Apr", 51.1));
-            Average.Add(new KeyValuePair<string, double>("May", 50.8));
-            Average.Add(new KeyValuePair<string, double>("Jun", 49.9));
-            Average.Add(new KeyValuePair<string, double>("Jul", 45.2));
-            Average.Add(new KeyValuePair<string, double>("Aug", 44.8));
-            Average.Add(new KeyValuePair<string, double>("Sep", 44.5));
-            Average.Add(new KeyValuePair<string, double>("Oct", 43.9));
-            Average.Add(new KeyValuePair<string, double>("Nov", 43.5));
-            Average.Add(new KeyValuePair<string, double>("Dec", 43.2));
+            foreach (MonthlyStat s in Stats)
+            {
+                Average.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Average));
+                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Actual));
+                Target.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Target));
+            }
         }
     }
 }

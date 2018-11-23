@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataAccess;
+using DataAccess.Entity;
 
 namespace PlantStatusDisplay
 {
@@ -23,31 +26,69 @@ namespace PlantStatusDisplay
     {
         AccidentDurationDisplay AccidentDurationDisplay;
         CustomerComplaintDuration CustomerComplaintDuration;
+        AndonStatus AndonStatus;
         ChartControl ChartControl;
         Queue<UserControl> Slides;
 
+        ObservableCollection<MonthlyStat> MonthlyStats;
+
+        Dictionary<String, Event> EventDictionary;
+
         Timer SlideChange;
+
+        bool SlideMode = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            MonthlyStats = new ObservableCollection<MonthlyStat>();
+            EventDictionary = new Dictionary<string, Event>();
 
-            Slides = new Queue<UserControl>();
+            using (var db = new PSDB())
+            {
+                var stats = from s in db.MonthlyStats
+                            select s;
+                var events = from e in db.Events
+                             select e;
+
+                foreach (MonthlyStat m in stats)
+                {
+                    MonthlyStats.Add(m);
+
+                }
+
+                foreach (Event e in events)
+                {
+                    EventDictionary.Add(e.Tag, e);
+
+                }
+                
+            }
+
+                Slides = new Queue<UserControl>();
 
             SlideChange = new Timer(5000);
             SlideChange.AutoReset = true;
             SlideChange.Elapsed += SlideChange_Elapsed;
-            AccidentDurationDisplay = new AccidentDurationDisplay(new DateTime(2018,1,1,0,0,0));
-            CustomerComplaintDuration = new CustomerComplaintDuration(new DateTime(2018, 2, 1, 0, 0, 0));
-            ChartControl = new ChartControl();
 
-            
-            //Slides.Enqueue(CustomerComplaintDuration);
+            AndonStatus = new AndonStatus();
+
+            AccidentDurationDisplay = new AccidentDurationDisplay(EventDictionary["LastAccidentDate"].Timestamp);
+            CustomerComplaintDuration = new CustomerComplaintDuration(EventDictionary["CustomerComplaintDate"].Timestamp);
+            ChartControl = new ChartControl(MonthlyStats);
+
+
+
+
+
+
+            Slides.Enqueue(AccidentDurationDisplay);
+            Slides.Enqueue(CustomerComplaintDuration);
             Slides.Enqueue(ChartControl);
-            //Slides.Enqueue(AccidentDurationDisplay);
+            
 
-            BaseGrid.Children.Add(AccidentDurationDisplay);
-            SlideChange.Start();
+            BaseGrid.Children.Add(AndonStatus);
+            
         }
 
         private void SlideChange_Elapsed(object sender, ElapsedEventArgs e)
@@ -62,5 +103,44 @@ namespace PlantStatusDisplay
             
             }));
                 }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.F1:
+                    if (SlideMode == false)
+                    {
+                        UserControl uc = Slides.Dequeue();
+                        BaseGrid.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
+                        {
+
+                            BaseGrid.Children.Clear();
+                            BaseGrid.Children.Add(uc);
+                            Slides.Enqueue(uc);
+                            SlideChange.Start();
+                            SlideMode = true;
+                        }));
+
+
+                    }
+                    else if (SlideMode == true)
+                    {
+                        BaseGrid.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
+                        {
+                            SlideChange.Stop();
+                            BaseGrid.Children.Clear();
+                            BaseGrid.Children.Add(AndonStatus);
+                            Slides.Clear();
+                            Slides.Enqueue(AccidentDurationDisplay);
+                            Slides.Enqueue(CustomerComplaintDuration);
+                            Slides.Enqueue(ChartControl);
+                            SlideMode = false;
+                        }));
+                    }
+                    break;
+
+            }
+        }
     }
 }

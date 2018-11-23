@@ -9,32 +9,84 @@
         Title="MainWindow" WindowState="Maximized">
     <Grid Background="Green">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <wpftoolkit:DataGrid Name="StatsDataGrid" Background="Green">
-            
-        </wpftoolkit:DataGrid>
+        <TextBlock Grid.Row="0" FontSize="30" Foreground="White" Text="MHIN Plant Status Update" 
+                                       HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center" TextAlignment="Center" Margin="50,0,0,0"/>
         <Grid Grid.Row="1" Margin="10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 
             </Grid.ColumnDefinitions>
-            <StackPanel  Orientation="Horizontal">
-                <Label Content="Accident Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Last Accident Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
                        Margin="5" FontSize="20" Foreground="White" />
                 <DatePicker Name="AccidentDatePicker" FontSize="20" Margin="5" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Label Content="Complaint Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Label Content="Last Complaint Date:" HorizontalAlignment="Right" VerticalAlignment="Center"
                        Margin="5" FontSize="20" Foreground="White" />
                 <DatePicker Name="CustomerComplaintDatePicker" FontSize="20" Margin="5" />
             </StackPanel>
         </Grid>
+        <GroupBox Grid.Row="2"  Background="Green" Margin="10">
+            <GroupBox.Header>
+                <TextBlock Text="Monthly Status" Foreground="White" FontSize="12" />
+            </GroupBox.Header>
+        <wpftoolkit:DataGrid Grid.Row="1" Name="StatsDataGrid" Background="Green" ItemsSource="{Binding}" AutoGenerateColumns="false" Margin="10"
+                             HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" BorderThickness="0">
 
-        <Button Grid.Row="2" Name="UpdateStatsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"
-                Content="Update" FontSize="20" />
+            <wpftoolkit:DataGrid.Columns>
+                <wpftoolkit:DataGridTextColumn Header="Month" 
+                                               Binding="{Binding Path=Month}" FontSize="20" IsReadOnly="True"   
+                                               CanUserReorder="False" CanUserSort="False"   />
+                
+                <wpftoolkit:DataGridTextColumn Header="12 Month Inventory Avg" 
+                                               Binding="{Binding Path=Inventory_Average, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="Inventory Target" 
+                                               Binding="{Binding Path=Inventory_Target, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="Inventory Actual" 
+                                               Binding="{Binding Path=Inventory_Actual, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False"  />
+
+                <wpftoolkit:DataGridTextColumn Header="LPA Target" 
+                                               Binding="{Binding Path=LPC_Target, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="LPA Actual" 
+                                               Binding="{Binding Path=LPC_Actual, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="NQC Target" 
+                                               Binding="{Binding Path=NQC_Target, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="NQC Actual" 
+                                               Binding="{Binding Path=NQC_Actual, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="OEE Target" 
+                                               Binding="{Binding Path=OEE_Target, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+                <wpftoolkit:DataGridTextColumn Header="OEE Actual" 
+                                               Binding="{Binding Path=OEE_Actual, Mode=TwoWay}" FontSize="20" IsReadOnly="False"   
+                                               CanUserReorder="False" CanUserSort="False" />
+
+            </wpftoolkit:DataGrid.Columns>
+
+        </wpftoolkit:DataGrid>
+        </GroupBox>
+        <Button Grid.Row="3" Name="UpdateStatsButton" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"
+                Content="Update" FontSize="20" Click="UpdateStatsButton_Click"   />
     </Grid>
 </Window>

@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccess.Entity
 {
-    public class DB : DbContext
+    public class PSDB : DbContext
     {
-        public DB()
+        public PSDB() : base("name=PSDBConnectionString")
         {
-
+            
         }
 
         public DbSet<MonthlyStat> MonthlyStats { get; set; }
+        public DbSet<Event> Events { get; set; }
+
     }
 
    

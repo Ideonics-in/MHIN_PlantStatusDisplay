@@ -4,50 +4,160 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlantStatusDisplay"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="1024" Background="White"
              >
+
     <Grid>
+    
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="0.10*" />
+            <RowDefinition Height="0.40*" />
+            <RowDefinition Height="0.20*" />
+            
+            <RowDefinition Height="0.20*" />
+            
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
-            <TextBlock Margin="10" DockPanel.Dock="Left" Text="KYCC" Foreground="Green" FontWeight="ExtraBold" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <Image Source="C:\Sagar\MISC\MHIN\PlantStatusDisplay\PlantStatusDisplay\Images\MHIN_Logo_Green.png" HorizontalAlignment="Right"
-                   VerticalAlignment="Top" Height="90" Width="90" Margin="10" />
+            <TextBlock Margin="10" DockPanel.Dock="Left" Text="KYCC" Foreground="#FF00732D" FontWeight="Bold" FontSize="50" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <Image Source="E:\Repository\MHIN\MHIN_PlantStatusDisplay\PlantStatusDisplay\Images\MANN_HUMMEL_Logo.jpg"  HorizontalAlignment="Right"
+                   VerticalAlignment="Top" MaxHeight="100" MaxWidth="200" Margin="10" />
         </DockPanel>
+        
+        
         <Grid Grid.Row="1" >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"  />
+                <ColumnDefinition  Width="Auto"  />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Margin="30,0,0,0" Content="Date of Last Complaint" Foreground="Black" HorizontalAlignment="Center" FontSize="45"  VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Margin="30,0,0,0" Foreground="Green" FontSize="100" Name="LastComplaintTextBlock"  HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <Label Grid.Row="0" Grid.Column="0" Margin="30,0,0,15" Content="Date of Last Complaint" Foreground="Black" HorizontalAlignment="Right" 
+                   FontSize="45"  VerticalAlignment="Bottom"/>
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="DayTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="DayTextBlock_2" Foreground="White" FontSize="100" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="D" VerticalAlignment="Center"/>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="MonthTextBlock_1" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0" >
+                    <TextBlock Name="MonthTextBlock_2" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="M" VerticalAlignment="Center"/>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="YearTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0" >
+                    <TextBlock Name="YearTextBlock_2" Foreground="White" FontSize="100" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="YearTextBlock_3" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="YearTextBlock_4" Foreground="White" FontSize="100" Text="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="Y" VerticalAlignment="Center"/>
+
+
+            </StackPanel>
+
+
+
+            <Label Grid.Row="1" Grid.Column="0" Content="Until" Foreground="Black" HorizontalAlignment="Right" FontSize="45" Margin="30,0,0,15" 
+                   VerticalAlignment="Bottom"/>
+            <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="TodayTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="TodayTextBlock_2" Foreground="White" FontSize="100" Text="3" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="D" VerticalAlignment="Center"/>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="CurMonthTextBlock_1" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0" >
+                    <TextBlock Name="CurMonthTextBlock_2" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="M" VerticalAlignment="Center"/>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="CurYearTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0" >
+                    <TextBlock Name="CurYearTextBlock_2" Foreground="White" FontSize="100" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="CurYearTextBlock_3" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                    <TextBlock Name="CurYearTextBlock_4" Foreground="White" FontSize="100" Text="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                </Grid>
+                <TextBlock FontSize="45" Margin="5,0,0,0" Foreground="Black" Text="Y" VerticalAlignment="Center"/>
+
+
+            </StackPanel>
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="Until" Foreground="Black" HorizontalAlignment="Center" FontSize="45" Margin="30,0,0,0" VerticalAlignment="Center"/>
-            <TextBlock  Foreground="Green" FontSize="100" Name="TodayDateTextBlock" Margin="30,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        </StackPanel>
+                <Label Content="Number of Days without Customer Complaint " Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="45" Margin="5"/>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Content="Number of Days without Customer Complaint " Foreground="Black" HorizontalAlignment="Center" FontSize="45" Margin="10"/>
+            </StackPanel>
 
-        </StackPanel>
+       <Grid Grid.Row="3" HorizontalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"  />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Margin="30,0,0,0" Content="We have reached" Foreground="Black" HorizontalAlignment="Center" FontSize="45"  VerticalAlignment="Center"/>
+                <StackPanel Grid.Column="1"  Orientation="Horizontal">
 
-        <Grid Grid.Row="4" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"  />
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Margin="30,0,0,0" Content="We have reached" Foreground="Black" HorizontalAlignment="Center" FontSize="45"  VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1" Margin="30,0,0,0" Foreground="Green" FontSize="200" Name="DaysTextBlock"  HorizontalAlignment="Left" VerticalAlignment="Center" />
-            <Label Grid.Column="2" Margin="30,0,0,0" Content="Days" Foreground="Black" HorizontalAlignment="Center" FontSize="45"  VerticalAlignment="Center"/>
-        </Grid>
+                    <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                        <TextBlock Name="DurationTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Grid>
+                    <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0" >
+                        <TextBlock Name="DurationTextBlock_2" Foreground="White" FontSize="100" Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Grid>
+                    <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                        <TextBlock Name="DurationTextBlock_3" Foreground="White" FontSize="100" Text="1" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Grid>
+                    <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
+                        <TextBlock Name="DurationTextBlock_4" Foreground="White" FontSize="100" Text="8" VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                    </Grid>
+
+
+
+                </StackPanel>
+                <Label Grid.Column="2" Margin="30,0,0,0" Content="Days" Foreground="Black" HorizontalAlignment="Center" FontSize="45"  VerticalAlignment="Center"/>
+            </Grid>
+
 
     </Grid>
 </UserControl>
