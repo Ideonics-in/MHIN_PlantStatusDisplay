@@ -33,7 +33,7 @@ namespace PlantStatusDisplay
         ObservableCollection<MonthlyStat> MonthlyStats;
 
         Dictionary<String, Event> EventDictionary;
-
+      
         Timer SlideChange;
 
         bool SlideMode = false;
@@ -88,8 +88,12 @@ namespace PlantStatusDisplay
             
 
             BaseGrid.Children.Add(AndonStatus);
+
+           
             
         }
+
+        
 
         private void SlideChange_Elapsed(object sender, ElapsedEventArgs e)
         {

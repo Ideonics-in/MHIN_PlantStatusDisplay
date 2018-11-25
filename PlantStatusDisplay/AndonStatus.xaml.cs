@@ -83,6 +83,11 @@ namespace PlantStatusDisplay
             DataTable lines = GetLines();
 
             UpdateDisplay(lines);
+            ClockTextBlock.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
+                new Action(() =>
+                {
+                    ClockTextBlock.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                }));
             StatusUpdateTimer.Start();
         }
 

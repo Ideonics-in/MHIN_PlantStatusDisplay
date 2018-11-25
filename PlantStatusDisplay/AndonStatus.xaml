@@ -16,9 +16,16 @@
             <RowDefinition/>
 
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="0" Background="Blue" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalAlignment="Center" 
-                 FontSize="25" FontWeight="Bold"
-                       Foreground="Yellow" Text="MHIN Tumkur Andon Status" BorderBrush="White"  BorderThickness="5"/>
+        <Border Grid.Row="0" Background="Blue" HorizontalAlignment="Stretch" BorderBrush="White"  BorderThickness="5">
+            <Grid>
+            <Image Source="E:\Repository\MHIN_PlantStatusDisplay\PlantStatusDisplay\Images\MANN_HUMMEL_Logo.jpg"
+                   VerticalAlignment="Stretch" Width="100" Height="75" HorizontalAlignment="Left"/>
+        <TextBox  Background="Blue" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" 
+                 FontSize="25" FontWeight="Bold" BorderBrush="Transparent"
+                       Foreground="Yellow" Text="MHIN Tumkur Andon Status" />
+                <TextBlock HorizontalAlignment="Right" Name="ClockTextBlock" VerticalAlignment="Center" Foreground="Yellow" FontSize="25" />
+            </Grid>
+        </Border>
         <DockPanel  Grid.Row="1">
             <Border DockPanel.Dock="Right" BorderBrush="White" BorderThickness="5">
                 <Grid DockPanel.Dock="Right" MaxWidth="200" Margin="0,5,0,0" >
@@ -34,13 +41,13 @@
                         <TextBlock Text="Status Code" FontSize="25" Foreground="Yellow" HorizontalAlignment="Center" FontWeight="Bold" 
                                    VerticalAlignment="Bottom"/>
                     </Grid>
-                    <Grid Margin="5" Grid.Row="1" Background="#FF3CA014">
+                    <Grid Margin="5" Grid.Row="1" Background="Lime">    
                         <TextBlock Text="Running" Foreground="Black" HorizontalAlignment="Center" FontSize="25"/>
                     </Grid>
-                    <Grid Margin="5" Grid.Row="2" Background="#FFEB690F">
+                    <Grid Margin="5" Grid.Row="2" Background="Yellow">
                         <TextBlock Text="Under Repair" Foreground="Black" HorizontalAlignment="Center" FontSize="25"/>
                     </Grid>
-                    <Grid Margin="5" Grid.Row="3" Background="#FFBE001E">
+                    <Grid Margin="5" Grid.Row="3" Background="Red">
                         <TextBlock Text="Down" Foreground="Black" HorizontalAlignment="Center" FontSize="25"/>
                     </Grid>
                     <Grid Margin="5" Grid.Row="4" Background="White">
@@ -118,15 +125,22 @@
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Name="Line_2" BorderBrush="White" BorderThickness="2" Margin="5" Grid.Row="0" Grid.Column="1" Width="150" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
+                        <!--<Border Name="Line_2" BorderBrush="White" BorderThickness="2" Margin="5" Grid.Row="0" Grid.Column="1" Width="150" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
                             <TextBlock HorizontalAlignment="Center" Foreground="Yellow" Text="CHR DSD" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Margin="21,0,20.4,0"/>
-                        </Border>
+                        </Border>-->
+                        
+                         <local:LineStatusWidget Grid.Row="0" Grid.Column="1"/>
+                        
 
                         <Border Name="Line_6" Margin="5" BorderBrush="White" BorderThickness="2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"  Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
                             <TextBlock HorizontalAlignment="Center" Foreground="Yellow" Text="MHD-1045" FontSize="25" FontWeight="Bold" VerticalAlignment="Top"/>
                         </Border>
                         <Border Name="Line_5" Margin="5" BorderBrush="White" BorderThickness="2" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
                             <TextBlock HorizontalAlignment="Center" Foreground="Yellow" Text="MHD-1023" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" />
+                        </Border>
+
+                        <Border Name="Line_4" Margin="5" BorderBrush="White" BorderThickness="2" Grid.Row="1" Grid.Column="1"   Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
+                            <TextBlock HorizontalAlignment="Center" Foreground="Yellow" Text="DHE-1004" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" />
                         </Border>
                         <Border Name="Line_3" Margin="5" BorderBrush="White" BorderThickness="2" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"  Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{Binding Path= Status, Converter={StaticResource StatusCoverter}}">
                             <TextBlock HorizontalAlignment="Center" Foreground="Yellow" Text="MHD-1000" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" />
