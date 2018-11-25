@@ -129,7 +129,7 @@
                         <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
-                    <local:LineStatusWidget x:Name="Line_15"  Grid.Column="2" />
+                    <local:LineStatusWidget x:Name="Line_15"  Grid.Column="1" />
                 </Grid>
 
                
