@@ -462,16 +462,18 @@
 
 
 
-                <chart:LineSeries Title="Target" x:Name="LPATargetTrend" Foreground="#FFBE0000" DependentValueBinding= "{Binding Value}"  
-                                   IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
-                                  DataPointStyle="{StaticResource TargetDataPointStyle}">
-
-                </chart:LineSeries>
+                
                 <chart:ColumnSeries Title="Actual"  x:Name="LPAActualTrend" DependentValueBinding= "{Binding Value}"  
                                       IndependentValueBinding="{Binding Key}" ItemsSource="{Binding ''}" Foreground="Green"  
                                     DataPointStyle="{DynamicResource ColumnDataPointStyle1}" LegendItemStyle="{DynamicResource ActualLegendItemStyle  }" >
 
                 </chart:ColumnSeries>
+
+                <chart:LineSeries Title="Target" x:Name="LPATargetTrend" Foreground="#FFBE0000" DependentValueBinding= "{Binding Value}"  
+                                   IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
+                                  DataPointStyle="{StaticResource TargetDataPointStyle}">
+
+                </chart:LineSeries>
             </chart:Chart>
             <chart:Chart Background="Transparent" x:Name="NQCChart" Title="NQC Trend" Foreground="Black" BorderThickness="0" 
                          Style="{DynamicResource ChartStyle1}" LegendStyle="{DynamicResource LegendStyle1}"  >
@@ -483,15 +485,17 @@
 
                 </chart:Chart.Axes>
 
-                <chart:LineSeries Title="Target" x:Name="NQCTargetTrend" Foreground="#FFBE0000" DependentValueBinding= "{Binding Value}"  
-                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }"  
-                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
+
 
                 <chart:ColumnSeries Title="Actual" Foreground="Green" x:Name="NQCActualTrend" DependentValueBinding= "{Binding Value}"  
                                       IndependentValueBinding="{Binding Key}" ItemsSource="{Binding ''}"   
                                     DataPointStyle="{DynamicResource ColumnDataPointStyle1}" LegendItemStyle="{StaticResource ActualLegendItemStyle  }"    >
 
                 </chart:ColumnSeries>
+
+                <chart:LineSeries Title="Target" x:Name="NQCTargetTrend" Foreground="#FFBE0000" DependentValueBinding= "{Binding Value}"  
+                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }"  
+                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
             </chart:Chart>
             <chart:Chart Background="Transparent" x:Name="OEEChart" Title="OEE Trend" Foreground="Black" BorderThickness="0" 
                          Style="{DynamicResource ChartStyle1}" LegendStyle="{DynamicResource LegendStyle1}"   >
@@ -503,15 +507,16 @@
 
                 </chart:Chart.Axes>
 
-                <chart:LineSeries Title="Target" x:Name="OEETargetTrend" Foreground="Maroon" DependentValueBinding= "{Binding Value}" 
-                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
-                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
+                
 
                 <chart:ColumnSeries Title="Actual" Foreground="Green" x:Name="OEEActualTrend" DependentValueBinding= "{Binding Value}"  
                                       IndependentValueBinding="{Binding Key}" ItemsSource="{Binding ''}" 
                                     DataPointStyle="{DynamicResource ColumnDataPointStyle1}"  LegendItemStyle="{StaticResource ActualLegendItemStyle  }"   >
 
                 </chart:ColumnSeries>
+                <chart:LineSeries Title="Target" x:Name="OEETargetTrend" Foreground="Maroon" DependentValueBinding= "{Binding Value}" 
+                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
+                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
             </chart:Chart>
             <chart:Chart Background="Transparent" x:Name="InventoryChart" Title="Inventory Trend" Foreground="Black" BorderThickness="0" 
                          Style="{DynamicResource ChartStyle1}" LegendStyle="{DynamicResource LegendStyle1}"  >
@@ -526,13 +531,15 @@
                 <chart:LineSeries Title="12 Month Avg" x:Name="InventoryAvgTrend" Foreground="#FFEB690F" DependentValueBinding= "{Binding Value}" 
                                   IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource AverageLegendItemStyle  }" 
                                   DataPointStyle="{StaticResource AverageDataPointStyle}"/>
-                <chart:LineSeries Title="Target" x:Name="InventoryTargetTrend" Foreground="#FFBE001E" DependentValueBinding= "{Binding Value}"  
-                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
-                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
+                
                 <chart:ColumnSeries Title="Actual" Foreground="Red" x:Name="InventoryActualTrend" DependentValueBinding= "{Binding Value}"  
                                       IndependentValueBinding="{Binding Key}" ItemsSource="{Binding ''}" DataPointStyle="{DynamicResource ColumnDataPointStyle1}"  LegendItemStyle="{StaticResource ActualLegendItemStyle  }"   >
 
                 </chart:ColumnSeries>
+
+                <chart:LineSeries Title="Target" x:Name="InventoryTargetTrend" Foreground="#FFBE001E" DependentValueBinding= "{Binding Value}"  
+                                  IndependentValueBinding="{Binding Key}" ItemsSource="{Binding}" LegendItemStyle="{StaticResource TargetLegendItemStyle  }" 
+                                  DataPointStyle="{StaticResource TargetDataPointStyle}"/>
             </chart:Chart>
         </UniformGrid>
 

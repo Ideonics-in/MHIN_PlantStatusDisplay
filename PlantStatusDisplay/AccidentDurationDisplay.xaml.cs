@@ -42,10 +42,10 @@ namespace PlantStatusDisplay
             CurMonthTextBlock_1.Text = DateTime.Now.Month.ToString("D2").Substring(0, 1);
             CurMonthTextBlock_2.Text = DateTime.Now.Month.ToString("D2").Substring(1, 1);
 
-            YearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
-            YearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
-            YearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
-            YearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
+            CurYearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
+            CurYearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
+            CurYearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
+            CurYearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
 
 
 

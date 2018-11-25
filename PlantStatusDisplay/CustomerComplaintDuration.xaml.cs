@@ -41,17 +41,17 @@ namespace PlantStatusDisplay
             CurMonthTextBlock_1.Text = DateTime.Now.Month.ToString("D2").Substring(0, 1);
             CurMonthTextBlock_2.Text = DateTime.Now.Month.ToString("D2").Substring(1, 1);
 
-            YearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
-            YearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
-            YearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
-            YearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
+            CurYearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
+            CurYearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
+            CurYearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
+            CurYearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
 
 
 
-            DurationTextBlock_1.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(0, 1);
-            DurationTextBlock_2.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(1, 1);
-            DurationTextBlock_3.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(2, 1);
-            DurationTextBlock_4.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D4").Substring(3, 1);
+            DurationTextBlock_1.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D3").Substring(0, 1);
+            DurationTextBlock_2.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D3").Substring(1, 1);
+            DurationTextBlock_3.Text = (DateTime.Now - lastCustomerComplaint.Value).Days.ToString("D3").Substring(2, 1);
+            
 
 
 

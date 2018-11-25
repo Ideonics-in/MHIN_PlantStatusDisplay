@@ -42,17 +42,27 @@ namespace PlantStatusDisplay
             DataTable linesTable= GetLines();
             for(int i = 0; i < linesTable.Rows.Count; i++)
             {
-                Lines.Add(new Line { Name = "Line_" + linesTable.Rows[i]["id"], Status = "No Plan" });
+                Lines.Add(new Line { ID = (int)linesTable.Rows[i]["id"],
+                    Name = (string)linesTable.Rows[i]["description"],
+                    Status = "No Plan" });
 
             }
 
             foreach (Line l in Lines)
             {
-                if (this.FindName(l.Name) != null)
+                string tag = "Line_" + l.ID;
+                if (this.FindName(tag) != null)
                 {
-
-                    Border b = (Border)this.FindName(l.Name);
-                    b.DataContext = l;
+                    
+                        LineStatusWidget w = (LineStatusWidget)this.FindName(tag);
+                        w.DataContext = l;
+                    
+                    //else
+                    //{
+                    //    Border b = (Border)this.FindName(tag);
+                    //    b.DataContext = l;
+                    //}
+                    
                 }
             
             }
@@ -86,7 +96,7 @@ namespace PlantStatusDisplay
             ClockTextBlock.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,
                 new Action(() =>
                 {
-                    ClockTextBlock.Text = DateTime.Now.ToString("dd/MM/yyyy HH:mm");
+                    ClockTextBlock.Text = DateTime.Now.ToString("dd/MM/yyyy\n    HH:mm");
                 }));
             StatusUpdateTimer.Start();
         }
@@ -98,7 +108,7 @@ namespace PlantStatusDisplay
             {
                 foreach(Line l in  Lines)
                 {
-                    if(l.Name == "Line_"+ lineTable.Rows[i]["id"])
+                    if(l.ID == (int) lineTable.Rows[i]["id"])
                     {
                         l.Status = (string)lineTable.Rows[i]["Status"];
                     }
@@ -125,10 +135,7 @@ namespace PlantStatusDisplay
             dr.Close();
             cmd.Dispose();
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
 
-            }
 
             con.Close();
             con.Dispose();
@@ -147,17 +154,17 @@ namespace PlantStatusDisplay
             {
                 if (value.ToString() == "Running")
                 {
-                    solidColorBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF3CA014"));
+                    solidColorBrush = Brushes.Lime;
                 }
                 else if((value.ToString() == "Acknowledged"))
                 {
-                    solidColorBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFEB690F"));
+                    solidColorBrush = Brushes.Yellow;
 
                 }
 
                 else if ((value.ToString() == "Down"))
                 {
-                    solidColorBrush = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FFBE001E"));
+                    solidColorBrush = Brushes.Red;
 
                 }
             }
@@ -173,7 +180,17 @@ namespace PlantStatusDisplay
 
     public class Line : INotifyPropertyChanged
     {
-        public string Name { get; set; }
+        public int ID { get; set; }
+        string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                OnPropertyChanged("Name");
+            }
+        }
         
 
         string status = String.Empty;

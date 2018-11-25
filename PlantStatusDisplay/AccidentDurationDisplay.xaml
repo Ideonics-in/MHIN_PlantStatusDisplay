@@ -33,7 +33,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Margin="30,0,0,15" Content="Date of Last Accident " Foreground="Black" HorizontalAlignment="Right" 
-                   FontSize="45"  VerticalAlignment="Bottom"/>
+                   FontSize="40"  VerticalAlignment="Bottom"/>
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
                 <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
                     <TextBlock Name="DayTextBlock_1" Foreground="White" FontSize="100" Text="2" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -76,7 +76,7 @@
 
 
 
-            <Label Grid.Row="1" Grid.Column="0" Content="Until" Foreground="Black" HorizontalAlignment="Right" FontSize="45" Margin="30,0,0,15" 
+            <Label Grid.Row="1" Grid.Column="0" Content="Until" Foreground="Black" HorizontalAlignment="Right" FontSize="40" Margin="30,0,0,15" 
                    VerticalAlignment="Bottom"/>
             <StackPanel Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
                 <Grid Width="80" Height="100" Background="#FF00732D" Margin="5,0,0,0">
