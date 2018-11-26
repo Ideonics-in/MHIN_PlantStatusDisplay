@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="PlantStatusDisplay.CustomerComplaintStatus"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wpftoolkit ="http://schemas.microsoft.com/wpf/2008/toolkit"
+             xmlns:local="clr-namespace:PlantStatusDisplay"
+             xmlns:wpf="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <local:StringToImageConverter x:Key="ImageConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Background="DarkGreen" HorizontalAlignment="Stretch" BorderBrush="White"  BorderThickness="5">
+            <Grid>
+                <Image Source="E:\Repository\MHIN_PlantStatusDisplay\PlantStatusDisplay\Images\MANN_HUMMEL_Logo.jpg"
+                   VerticalAlignment="Stretch" Width="100" Height="75" HorizontalAlignment="Left"/>
+                <TextBox  Background="DarkGreen" HorizontalAlignment="Center" HorizontalContentAlignment="Center" 
+                  VerticalAlignment="Center" 
+                 FontSize="40" FontWeight="SemiBold" BorderBrush="Transparent"
+                       Foreground="Yellow" Text="MHIN-TUMKUR CUSTOMER COMPLAINT STATUS" />
+               
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1" Background="White">
+            <wpftoolkit:DataGrid  Grid.Row="1" Name="StatusGrid" Background="Transparent"
+                                 ItemsSource="{Binding}" AutoGenerateColumns="false" Margin="10"
+                             HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" BorderThickness="0"
+                                  VerticalScrollBarVisibility="Disabled">
+
+                <wpftoolkit:DataGrid.Columns>
+                    <wpftoolkit:DataGridTemplateColumn Header="Customer" > 
+                       
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding Logo}" Width="120" Height="50" HorizontalAlignment="Center"/>
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="JAN">
+                        
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= JanStatus ,Converter={StaticResource ImageConverter}}" />
+                               
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="FEB">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= FebStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="MAR">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= MarStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="APR">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= AprStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="MAY">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= MayStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+                    <wpftoolkit:DataGridTemplateColumn Header="JUN">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= JunStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="JUL">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= JulStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+                    <wpftoolkit:DataGridTemplateColumn Header="AUG">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= AugStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+                    <wpftoolkit:DataGridTemplateColumn Header="SEP">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= SepStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="OCT">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= OctStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+                    <wpftoolkit:DataGridTemplateColumn Header="NOV">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= NovStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+
+                    <wpftoolkit:DataGridTemplateColumn Header="DEC">
+
+                        <wpftoolkit:DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="{Binding Path= DecStatus ,Converter={StaticResource ImageConverter}}" />
+
+                            </DataTemplate>
+                        </wpftoolkit:DataGridTemplateColumn.CellTemplate>
+
+                    </wpftoolkit:DataGridTemplateColumn>
+                   
+
+                </wpftoolkit:DataGrid.Columns>
+
+            </wpftoolkit:DataGrid>
+
+        </Grid>
+    </Grid>
+</UserControl>

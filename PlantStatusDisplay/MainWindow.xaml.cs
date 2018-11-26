@@ -26,9 +26,12 @@ namespace PlantStatusDisplay
     {
         AccidentDurationDisplay AccidentDurationDisplay;
         CustomerComplaintDuration CustomerComplaintDuration;
+        CustomerComplaintStatus CustomerComplaintStatus;
         AndonStatus AndonStatus;
         ChartControl ChartControl;
         Queue<UserControl> Slides;
+
+        ObservableCollection<CustomerComplaint> CustomerComplaints;
 
         ObservableCollection<MonthlyStat> MonthlyStats;
 
@@ -75,16 +78,216 @@ namespace PlantStatusDisplay
 
             AccidentDurationDisplay = new AccidentDurationDisplay(EventDictionary["LastAccidentDate"].Timestamp);
             CustomerComplaintDuration = new CustomerComplaintDuration(EventDictionary["CustomerComplaintDate"].Timestamp);
+            CustomerComplaintStatus = new CustomerComplaintStatus();
             ChartControl = new ChartControl(MonthlyStats);
 
+            CustomerComplaints = new ObservableCollection<CustomerComplaint>();
+
+            CustomerComplaints.Add(new CustomerComplaint { Logo = "./Images/Ford.png",
+                JanStatus = "Yes", FebStatus="No",MarStatus="No",AprStatus="No",MayStatus = "Yes",JunStatus = "No",
+            JulStatus="Yes", AugStatus="No", SepStatus="No", OctStatus="No", NovStatus="No",DecStatus="" });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/Mahindra.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/AshokLeyland.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/aisin.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/Fiat.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/tata.png",
+                JanStatus = "No",
+                FebStatus = "Yes",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/BharatBenz.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/Volvo.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/atlas.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/elgi.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/tafe.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/ir.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/doosan.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = ""
+            });
+
+            CustomerComplaintStatus.StatusGrid.DataContext = CustomerComplaints;
 
 
 
 
-
-            Slides.Enqueue(AccidentDurationDisplay);
-            Slides.Enqueue(CustomerComplaintDuration);
-            Slides.Enqueue(ChartControl);
+           // Slides.Enqueue(AccidentDurationDisplay);
+          //  Slides.Enqueue(CustomerComplaintDuration);
+           // Slides.Enqueue(ChartControl);
+            Slides.Enqueue(CustomerComplaintStatus);
             
 
             BaseGrid.Children.Add(AndonStatus);
@@ -147,4 +350,6 @@ namespace PlantStatusDisplay
             }
         }
     }
+
+   
 }

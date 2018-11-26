@@ -24,6 +24,8 @@ namespace DataAccess.Entity
         public float? OEE_Target { get; set; }
         public float? OEE_Actual { get; set; }
 
+        public String CustomerComplaintStatus { get; set; }
+
     }
 
 }
