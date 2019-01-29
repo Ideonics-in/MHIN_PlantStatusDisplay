@@ -17,6 +17,7 @@ namespace DataAccess.Entity
 
         public DbSet<MonthlyStat> MonthlyStats { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
 
     }
 

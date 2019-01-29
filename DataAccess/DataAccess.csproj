@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entity\Event.cs" />
+    <Compile Include="Entity\Inventory.cs" />
+    <Compile Include="Entity\Labour.cs" />
     <Compile Include="Entity\PSDB.cs" />
     <Compile Include="Entity\MonthlyStat.cs" />
     <Compile Include="Migrations\Configuration.cs" />

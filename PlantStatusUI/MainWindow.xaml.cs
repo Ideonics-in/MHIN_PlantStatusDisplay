@@ -24,7 +24,8 @@ namespace PlantStatusUI
     {
         ObservableCollection<MonthlyStat> MonthlyStats;
 
-        
+        ObservableCollection<Inventory> Inventory;
+        ObservableCollection<Labour> Labour;
 
         Dictionary<String, Event> EventDictionary;
         public MainWindow()
@@ -60,6 +61,8 @@ namespace PlantStatusUI
                     CustomerComplaintDatePicker.SelectedDate = EventDictionary["CustomerComplaintDate"].Timestamp.Value;
 
                 StatsDataGrid.DataContext = MonthlyStats;
+                Inventory = new ObservableCollection<Inventory>();
+                Labour = new ObservableCollection<Labour>();
             }
         }
 
@@ -101,6 +104,34 @@ namespace PlantStatusUI
                 MessageBox.Show("Update Complete", "Update Info", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
+        }
+
+        private void UpdateLabourButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(BaseTabControl.SelectedIndex == 1)
+            {
+                CurrentDatePicker.SelectedDate = DateTime.Now;
+                Inventory.Clear();
+                Labour.Clear();
+                InventoryDataGrid.DataContext = Inventory;
+                LabourEffDataGrid.DataContext = Labour;
+            }
+        }
+
+        private void LabourEfficiencyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Labour.Add(new DataAccess.Entity.Labour());
+
+        }
+
+        private void InventoryButton_Click(object sender, RoutedEventArgs e)
+        {
+            Inventory.Add(new DataAccess.Entity.Inventory());
         }
     }
 }
