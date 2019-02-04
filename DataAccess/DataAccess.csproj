@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\CustomerComplaint.cs" />
     <Compile Include="Entity\Event.cs" />
     <Compile Include="Entity\Inventory.cs" />
     <Compile Include="Entity\Labour.cs" />

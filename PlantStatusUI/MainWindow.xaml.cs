@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace PlantStatusUI
 
         ObservableCollection<Inventory> Inventory;
         ObservableCollection<Labour> Labour;
+        ObservableCollection<CustomerComplaint> CustomerComplaints;
 
         Dictionary<String, Event> EventDictionary;
         public MainWindow()
@@ -36,6 +38,8 @@ namespace PlantStatusUI
             
             EventDictionary = new Dictionary<string, Event>();
 
+            CustomerComplaints = new ObservableCollection<CustomerComplaint>();
+
             using (var db = new PSDB())
             {
                 var stats = from s in db.MonthlyStats
@@ -43,6 +47,8 @@ namespace PlantStatusUI
                             select s;
                 var events = from e in db.Events
                              select e;
+
+                var complaints = db.CustomerComplaints.ToList();
 
                 foreach(MonthlyStat m in stats)
                 {
@@ -61,7 +67,16 @@ namespace PlantStatusUI
                 if(EventDictionary["CustomerComplaintDate"].Timestamp != null)
                     CustomerComplaintDatePicker.SelectedDate = EventDictionary["CustomerComplaintDate"].Timestamp.Value;
 
+                foreach (CustomerComplaint c in complaints)
+                {
+                    CustomerComplaints.Add(c);
+
+                }
+
+
+
                 StatsDataGrid.DataContext = MonthlyStats;
+                    ComplaintsGrid.DataContext = CustomerComplaints;
                 Inventory = new ObservableCollection<Inventory>();
                 Labour = new ObservableCollection<Labour>();
             }
@@ -134,6 +149,72 @@ namespace PlantStatusUI
         private void InventoryButton_Click(object sender, RoutedEventArgs e)
         {
             Inventory.Add(new DataAccess.Entity.Inventory());
+        }
+
+        private void UpdateCustomerComplaintsButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new PSDB())
+            {
+                foreach (var c in CustomerComplaints)
+                {
+                    var ms = db.CustomerComplaints.Find(c.CustomerComplaintID);
+                    if (ms == null) continue;
+
+                    ms.Jan = c.Jan;
+                    ms.Feb = c.Feb;
+                    ms.Mar = c.Mar;
+                    ms.Apr = c.Apr;
+                    ms.May = c.May;
+                    ms.Jun = c.Jun;
+                    ms.Jul = c.Jul;
+                    ms.Aug = c.Aug;
+                    ms.Sep = c.Sep;
+                    ms.Oct = c.Oct;
+                    ms.Nov = c.Nov;
+                    ms.Dec = c.Dec;
+                }
+
+                db.SaveChanges();
+                MessageBox.Show("Update Complete", "Update Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+    }
+    [ValueConversion(typeof(string), typeof(Boolean?))]
+    public class StringToImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            
+            if (string.IsNullOrEmpty((string)value))
+            {
+                return null;
+            }
+            else if (value.ToString() == "No")
+                return false;
+
+            else if ((value.ToString() == "Yes"))
+            {
+                return true;
+
+            }
+            else return null;
+
+
+           
+           
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            Boolean? ComplaintStatus = (Boolean?)value;
+            if (ComplaintStatus == null)
+                return "";
+            else if (ComplaintStatus == true)
+                return "Yes";
+            else if (ComplaintStatus == false)
+                return "No";
+
+            return String.Empty;
         }
     }
 }

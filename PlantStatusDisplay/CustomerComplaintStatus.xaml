@@ -10,6 +10,7 @@
              d:DesignHeight="800" d:DesignWidth="1200">
     <UserControl.Resources>
         <local:StringToImageConverter x:Key="ImageConverter" />
+        <local:NameToImageConverter x:Key="NameConverter" />
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -41,7 +42,8 @@
                        
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding Logo}" Width="120" Height="28" HorizontalAlignment="Center"/>
+                                <Button Content="{Binding Name,Converter={StaticResource NameConverter}}" IsEnabled="False"  
+                                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -52,7 +54,7 @@
                         
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= JanStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Jan ,Converter={StaticResource ImageConverter}}" />
                                
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -63,7 +65,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= FebStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Feb ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -74,7 +76,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= MarStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Mar ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -85,7 +87,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= AprStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Apr ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -96,7 +98,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= MayStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= May ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -106,7 +108,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= JunStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Jun ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -117,7 +119,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= JulStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Jul ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -127,7 +129,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= AugStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Aug ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -137,7 +139,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= SepStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Sep ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -148,7 +150,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= OctStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Oct ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -158,7 +160,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= NovStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Nov ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>
@@ -169,7 +171,7 @@
 
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Path= DecStatus ,Converter={StaticResource ImageConverter}}" />
+                                <Button Content="{Binding Path= Dec ,Converter={StaticResource ImageConverter}}" />
 
                             </DataTemplate>
                         </wpftoolkit:DataGridTemplateColumn.CellTemplate>

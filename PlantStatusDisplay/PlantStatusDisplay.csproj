@@ -218,13 +218,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\aisin.png">
+    <Resource Include="Images\Aisin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\AshokLeyland.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\atlas.png">
+    <Resource Include="Images\Atlas.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\BharatBenz.png">
@@ -233,7 +233,7 @@
     <Resource Include="Images\Doosan.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\elgi.png">
+    <Resource Include="Images\Elgi.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Fiat.png">
@@ -254,13 +254,13 @@
     <Resource Include="Images\SadSmiley.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\tafe.png">
+    <Resource Include="Images\Tafe.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\tata.png">
+    <Resource Include="Images\Tata.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\volvo.png">
+    <Resource Include="Images\Volvo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

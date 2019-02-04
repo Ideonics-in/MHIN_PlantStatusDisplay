@@ -46,6 +46,7 @@ namespace PlantStatusDisplay
             InitializeComponent();
             MonthlyStats = new ObservableCollection<MonthlyStat>();
             EventDictionary = new Dictionary<string, Event>();
+            CustomerComplaints = new ObservableCollection<CustomerComplaint>();
 
             using (var db = new PSDB())
             {
@@ -97,7 +98,13 @@ namespace PlantStatusDisplay
                     EventDictionary.Add(e.Tag, e);
 
                 }
-                
+                var complaints = db.CustomerComplaints.ToList();
+
+                foreach (CustomerComplaint c in complaints)
+                {
+                    CustomerComplaints.Add(c);
+
+                }
             }
 
                 Slides = new Queue<UserControl>();
@@ -113,233 +120,7 @@ namespace PlantStatusDisplay
             CustomerComplaintStatus = new CustomerComplaintStatus();
             ChartControl = new ChartControl(MonthlyStats);
 
-            CustomerComplaints = new ObservableCollection<CustomerComplaint>();
-
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/Ford.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/Mahindra.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/AshokLeyland.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/aisin.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/Fiat.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/tata.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/BharatBenz.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/Volvo.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/atlas.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/elgi.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/tafe.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/ir.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/doosan.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
-
-            CustomerComplaints.Add(new CustomerComplaint
-            {
-                Logo = "./Images/AutoAlliance.png",
-                JanStatus = "No",
-                FebStatus = "",
-                MarStatus = "",
-                AprStatus = "",
-                MayStatus = "",
-                JunStatus = "",
-                JulStatus = "",
-                AugStatus = "",
-                SepStatus = "",
-                OctStatus = "",
-                NovStatus = "",
-                DecStatus = ""
-            });
+            
 
             CustomerComplaintStatus.StatusGrid.DataContext = CustomerComplaints;
 
