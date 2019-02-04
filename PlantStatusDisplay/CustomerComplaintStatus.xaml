@@ -42,7 +42,8 @@
                        
                         <wpftoolkit:DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="{Binding Name,Converter={StaticResource NameConverter}}" IsEnabled="False"  
+                                <Button Content="{Binding Name,Converter={StaticResource NameConverter}}"
+                                        IsEnabled="False"  MaxHeight="40"
                                         HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
                             </DataTemplate>
