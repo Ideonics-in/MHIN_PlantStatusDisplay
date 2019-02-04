@@ -39,6 +39,7 @@ namespace PlantStatusUI
             using (var db = new PSDB())
             {
                 var stats = from s in db.MonthlyStats
+                            where s.Year == DateTime.Now.Year
                             select s;
                 var events = from e in db.Events
                              select e;
@@ -89,6 +90,7 @@ namespace PlantStatusUI
 
                     ms.OEE_Actual = m.OEE_Actual;
                     ms.OEE_Target = m.OEE_Target;
+
                 }
 
                 foreach(Event ev in EventDictionary.Values)

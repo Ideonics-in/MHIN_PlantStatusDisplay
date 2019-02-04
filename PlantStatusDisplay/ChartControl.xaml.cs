@@ -74,24 +74,16 @@ namespace PlantStatusDisplay
             foreach(MonthlyStat s in Stats)
             {
 
-                if (s.Month.Contains(Months[i]))
-                {
+                
                     LPAActual.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Actual));
                     LPATarget.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Target));
-                    Months.RemoveAt(i);
-                }
-                    
+                
                
 
-                i++;
+                
             }
 
-            foreach(String s in Months)
-            {
-
-                LPAActual.Add(new KeyValuePair<string, float?>(s, 0));
-                LPATarget.Add(new KeyValuePair<string, float?>(s, 0));
-            }
+            
             
            
         }
@@ -120,19 +112,13 @@ namespace PlantStatusDisplay
 
             foreach (MonthlyStat s in Stats)
             {
-                if (s.Month.Contains(Months[i]))
-                {
+            
                     Actual.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Actual));
                     Target.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Target));
                     Months.RemoveAt(i);
-                    i++;
-                }
+                    
             }
-            foreach (String s in Months)
-            {
-                Actual.Add(new KeyValuePair<string, float?>(s, 0));
-                Target.Add(new KeyValuePair<string, float?>(s, 0));
-            }
+            
         }
     }
 
@@ -156,21 +142,14 @@ namespace PlantStatusDisplay
             Target = new List<KeyValuePair<string, float?>>();
             foreach (MonthlyStat s in Stats)
             {
-                if (s.Month.Contains(Months[i]))
-                {
+               
                     Actual.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Actual));
                     Target.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Target));
                     Months.RemoveAt(i);
-                }
-
-                i++;
+               
             }
 
-            foreach (String s in Months)
-            {
-                Actual.Add(new KeyValuePair<string, float?>(s, 0));
-                Target.Add(new KeyValuePair<string, float?>(s, 0));
-            }
+            
         }
     }
 
@@ -197,21 +176,13 @@ namespace PlantStatusDisplay
 
             foreach (MonthlyStat s in Stats)
             {
-                if (s.Month.Contains(Months[i]))
-                {
+               
                     Average.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Average));
                     Actual.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Actual));
                     Target.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Target));
-                }
-
-                i++;
+              
             }
-            foreach (String s in Months)
-            {
-                Average.Add(new KeyValuePair<string, float?>(s, 0));
-                Actual.Add(new KeyValuePair<string, float?>(s, 0));
-                Target.Add(new KeyValuePair<string, float?>(s, 0));
-            }
+            
         }
     }
 }
