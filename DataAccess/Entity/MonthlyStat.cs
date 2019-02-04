@@ -10,7 +10,7 @@ namespace DataAccess.Entity
     {
         public int ID { get; set; }
         public String Month { get; set; }
-
+        public int Year { get; set; }
         public float? Inventory_Average { get; set; }
         public float? Inventory_Target { get; set; }
         public float? Inventory_Actual { get; set; }
@@ -25,6 +25,15 @@ namespace DataAccess.Entity
         public float? OEE_Actual { get; set; }
 
         public String CustomerComplaintStatus { get; set; }
+
+        public MonthlyStat()
+        {
+            Inventory_Actual = Inventory_Average = Inventory_Target = 0;
+            LPC_Actual = LPC_Target = 0;
+            NQC_Actual = NQC_Target = 0;
+            OEE_Actual = OEE_Target = 0;
+
+        }
 
     }
 

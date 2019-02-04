@@ -61,14 +61,36 @@ namespace PlantStatusDisplay
 
         public LPATrend(ObservableCollection<MonthlyStat> Stats)
         {
+            Months = new List<string>();
+            Months.Add("Avg");
+            Months.Add("Jan"); Months.Add("Feb"); Months.Add("Mar"); Months.Add("Apr");
+            Months.Add("May"); Months.Add("Jun"); Months.Add("Jul"); Months.Add("Aug");
+            Months.Add("Sep"); Months.Add("Oct"); Months.Add("Nov"); Months.Add("Dec");
+            
+
             LPAActual = new List<KeyValuePair<string, float?>>();
             LPATarget = new List<KeyValuePair<string, float?>>();
-
+            int i = 0;
             foreach(MonthlyStat s in Stats)
             {
-                
-                LPAActual.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Actual));
-                LPATarget.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Target));
+
+                if (s.Month.Contains(Months[i]))
+                {
+                    LPAActual.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Actual));
+                    LPATarget.Add(new KeyValuePair<string, float?>(s.Month, s.LPC_Target));
+                    Months.RemoveAt(i);
+                }
+                    
+               
+
+                i++;
+            }
+
+            foreach(String s in Months)
+            {
+
+                LPAActual.Add(new KeyValuePair<string, float?>(s, 0));
+                LPATarget.Add(new KeyValuePair<string, float?>(s, 0));
             }
             
            
@@ -84,12 +106,32 @@ namespace PlantStatusDisplay
 
         public NQCTrend(ObservableCollection<MonthlyStat> Stats)
         {
+            Months = new List<string>();
+            Months.Add("Avg");
+            Months.Add("Jan"); Months.Add("Feb"); Months.Add("Mar"); Months.Add("Apr");
+            Months.Add("May"); Months.Add("Jun"); Months.Add("Jul"); Months.Add("Aug");
+            Months.Add("Sep"); Months.Add("Oct"); Months.Add("Nov"); Months.Add("Dec");
+            int i = 0;
+
+
             Actual = new List<KeyValuePair<string, float?>>();
             Target = new List<KeyValuePair<string, float?>>();
+
+
             foreach (MonthlyStat s in Stats)
             {
-                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Actual));
-                Target.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Target));
+                if (s.Month.Contains(Months[i]))
+                {
+                    Actual.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Actual));
+                    Target.Add(new KeyValuePair<string, float?>(s.Month, s.NQC_Target));
+                    Months.RemoveAt(i);
+                    i++;
+                }
+            }
+            foreach (String s in Months)
+            {
+                Actual.Add(new KeyValuePair<string, float?>(s, 0));
+                Target.Add(new KeyValuePair<string, float?>(s, 0));
             }
         }
     }
@@ -103,24 +145,51 @@ namespace PlantStatusDisplay
 
         public OEETrend(ObservableCollection<MonthlyStat> Stats)
         {
+            Months = new List<string>();
+            Months.Add("Avg");
+            Months.Add("Jan"); Months.Add("Feb"); Months.Add("Mar"); Months.Add("Apr");
+            Months.Add("May"); Months.Add("Jun"); Months.Add("Jul"); Months.Add("Aug");
+            Months.Add("Sep"); Months.Add("Oct"); Months.Add("Nov"); Months.Add("Dec");
+            int i = 0;
+
             Actual = new List<KeyValuePair<string, float?>>();
             Target = new List<KeyValuePair<string, float?>>();
             foreach (MonthlyStat s in Stats)
             {
-                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Actual));
-                Target.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Target));
+                if (s.Month.Contains(Months[i]))
+                {
+                    Actual.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Actual));
+                    Target.Add(new KeyValuePair<string, float?>(s.Month, s.OEE_Target));
+                    Months.RemoveAt(i);
+                }
+
+                i++;
+            }
+
+            foreach (String s in Months)
+            {
+                Actual.Add(new KeyValuePair<string, float?>(s, 0));
+                Target.Add(new KeyValuePair<string, float?>(s, 0));
             }
         }
     }
 
     public class InventoryTrend
     {
+        public List<String> Months { get; set; }
         public List<KeyValuePair<String, float?>> Average { get; set; }
         public List<KeyValuePair<String, float?>> Target { get; set; }
         public List<KeyValuePair<String, float?>> Actual { get; set; }
 
         public InventoryTrend(ObservableCollection<MonthlyStat> Stats)
         {
+            Months = new List<string>();
+            Months.Add("Avg");
+            Months.Add("Jan"); Months.Add("Feb"); Months.Add("Mar"); Months.Add("Apr");
+            Months.Add("May"); Months.Add("Jun"); Months.Add("Jul"); Months.Add("Aug");
+            Months.Add("Sep"); Months.Add("Oct"); Months.Add("Nov"); Months.Add("Dec");
+            int i = 0;
+
             Actual = new List<KeyValuePair<string, float?>>();
             Target = new List<KeyValuePair<string, float?>>();
             Average = new List<KeyValuePair<string, float?>>();
@@ -128,9 +197,20 @@ namespace PlantStatusDisplay
 
             foreach (MonthlyStat s in Stats)
             {
-                Average.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Average));
-                Actual.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Actual));
-                Target.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Target));
+                if (s.Month.Contains(Months[i]))
+                {
+                    Average.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Average));
+                    Actual.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Actual));
+                    Target.Add(new KeyValuePair<string, float?>(s.Month, s.Inventory_Target));
+                }
+
+                i++;
+            }
+            foreach (String s in Months)
+            {
+                Average.Add(new KeyValuePair<string, float?>(s, 0));
+                Actual.Add(new KeyValuePair<string, float?>(s, 0));
+                Target.Add(new KeyValuePair<string, float?>(s, 0));
             }
         }
     }

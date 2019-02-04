@@ -49,16 +49,48 @@ namespace PlantStatusDisplay
 
             using (var db = new PSDB())
             {
+                var avgStats = db.MonthlyStats.Where(s => s.Year == DateTime.Now.Year - 1).ToList();
+
+                var avgStat = new MonthlyStat();
+                foreach(MonthlyStat s in avgStats)
+                {
+                    avgStat.Inventory_Actual += ((s.Inventory_Actual) == null ? 0 : s.Inventory_Actual);
+                    avgStat.Inventory_Average += ((s.Inventory_Average) == null ? 0 : s.Inventory_Average);
+                    avgStat.Inventory_Target += ((s.Inventory_Target) == null ? 0 : s.Inventory_Target);
+                    avgStat.LPC_Actual += ((s.LPC_Actual) == null ? 0 : s.LPC_Actual);
+                    avgStat.LPC_Target += ((s.LPC_Target) == null ? 0 : s.LPC_Target);
+                    avgStat.NQC_Actual += ((s.NQC_Actual) == null ? 0 : s.NQC_Actual);
+                    avgStat.NQC_Target += ((s.NQC_Target) == null ? 0 : s.NQC_Target);
+                    avgStat.OEE_Actual += ((s.OEE_Actual) == null ? 0 : s.OEE_Actual);
+                    avgStat.OEE_Target += ((s.OEE_Target) == null ? 0 : s.OEE_Target);
+
+                }
+                avgStat.Inventory_Actual /= avgStats.Count;
+                avgStat.Inventory_Average /= avgStats.Count;
+                avgStat.Inventory_Target /= avgStats.Count;
+                avgStat.LPC_Actual /= avgStats.Count;
+                avgStat.LPC_Target /= avgStats.Count;
+                avgStat.NQC_Actual /= avgStats.Count;
+                avgStat.NQC_Target /= avgStats.Count;
+                avgStat.OEE_Actual /= avgStats.Count;
+                avgStat.OEE_Target /= avgStats.Count;
+
+                avgStat.Month = (DateTime.Now.Year-1).ToString() + "-Avg";
+
+                MonthlyStats.Add(avgStat);
+
                 var stats = from s in db.MonthlyStats
+                            where s.Year == DateTime.Now.Year
                             select s;
                 var events = from e in db.Events
                              select e;
-
+ 
                 foreach (MonthlyStat m in stats)
                 {
                     MonthlyStats.Add(m);
 
                 }
+                
 
                 foreach (Event e in events)
                 {
@@ -284,9 +316,9 @@ namespace PlantStatusDisplay
 
 
 
-           // Slides.Enqueue(AccidentDurationDisplay);
-          //  Slides.Enqueue(CustomerComplaintDuration);
-           // Slides.Enqueue(ChartControl);
+           Slides.Enqueue(AccidentDurationDisplay);
+           Slides.Enqueue(CustomerComplaintDuration);
+           Slides.Enqueue(ChartControl);
             Slides.Enqueue(CustomerComplaintStatus);
             
 
