@@ -83,9 +83,22 @@ namespace PlantStatusDisplay
 
             CustomerComplaints = new ObservableCollection<CustomerComplaint>();
 
-            CustomerComplaints.Add(new CustomerComplaint { Logo = "./Images/Ford.png",
-                JanStatus = "Yes", FebStatus="No",MarStatus="No",AprStatus="No",MayStatus = "Yes",JunStatus = "No",
-            JulStatus="Yes", AugStatus="No", SepStatus="No", OctStatus="No", NovStatus="No",DecStatus="" });
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/Ford.png",
+                JanStatus = "Yes",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "Yes",
+                JunStatus = "No",
+                JulStatus = "Yes",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "No",
+                NovStatus = "No",
+                DecStatus = "Yes"
+            });
             CustomerComplaints.Add(new CustomerComplaint
             {
                 Logo = "./Images/Mahindra.png",
@@ -100,23 +113,23 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
                 Logo = "./Images/AshokLeyland.png",
-                JanStatus = "No",
-                FebStatus = "No",
-                MarStatus = "No",
-                AprStatus = "No",
-                MayStatus = "No",
-                JunStatus = "No",
-                JulStatus = "No",
-                AugStatus = "No",
+                JanStatus = "",
+                FebStatus = "",
+                MarStatus = "",
+                AprStatus = "",
+                MayStatus = "",
+                JunStatus = "",
+                JulStatus = "",
+                AugStatus = "",
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -132,7 +145,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -148,7 +161,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -164,7 +177,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -180,7 +193,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -196,7 +209,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -212,7 +225,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -228,7 +241,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -244,7 +257,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -260,7 +273,7 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
             });
             CustomerComplaints.Add(new CustomerComplaint
             {
@@ -276,7 +289,24 @@ namespace PlantStatusDisplay
                 SepStatus = "No",
                 OctStatus = "No",
                 NovStatus = "No",
-                DecStatus = ""
+                DecStatus = "No"
+            });
+
+            CustomerComplaints.Add(new CustomerComplaint
+            {
+                Logo = "./Images/AutoAlliance.png",
+                JanStatus = "No",
+                FebStatus = "No",
+                MarStatus = "No",
+                AprStatus = "No",
+                MayStatus = "No",
+                JunStatus = "No",
+                JulStatus = "No",
+                AugStatus = "No",
+                SepStatus = "No",
+                OctStatus = "Yes",
+                NovStatus = "No",
+                DecStatus = "No"
             });
 
             CustomerComplaintStatus.StatusGrid.DataContext = CustomerComplaints;
@@ -284,9 +314,9 @@ namespace PlantStatusDisplay
 
 
 
-           // Slides.Enqueue(AccidentDurationDisplay);
-          //  Slides.Enqueue(CustomerComplaintDuration);
-           // Slides.Enqueue(ChartControl);
+            Slides.Enqueue(AccidentDurationDisplay);
+            Slides.Enqueue(CustomerComplaintDuration);
+            Slides.Enqueue(ChartControl);
             Slides.Enqueue(CustomerComplaintStatus);
             
 
@@ -318,6 +348,8 @@ namespace PlantStatusDisplay
                 case Key.F1:
                     if (SlideMode == false)
                     {
+                        CustomerComplaintDuration.Update();
+                        AccidentDurationDisplay.Update();
                         UserControl uc = Slides.Dequeue();
                         BaseGrid.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
                         {
@@ -342,6 +374,7 @@ namespace PlantStatusDisplay
                             Slides.Enqueue(AccidentDurationDisplay);
                             Slides.Enqueue(CustomerComplaintDuration);
                             Slides.Enqueue(ChartControl);
+                            Slides.Enqueue(CustomerComplaintStatus);
                             SlideMode = false;
                         }));
                     }

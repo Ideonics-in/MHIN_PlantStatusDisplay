@@ -480,7 +480,7 @@
 
                 <chart:Chart.Axes>
                     <chart:CategoryAxis Orientation="X"  FontSize="15" />
-                    <chart:LinearAxis Orientation="Y" Title="Score in %" FontSize="20" Minimum="0" Maximum="0.35" Interval=".05"/>
+                    <chart:LinearAxis Orientation="Y" Title=" % " FontSize="20" Minimum="0" Maximum="0.35" Interval=".05"/>
 
 
                 </chart:Chart.Axes>
@@ -502,7 +502,7 @@
 
                 <chart:Chart.Axes>
                     <chart:CategoryAxis Orientation="X"  FontSize="15" />
-                    <chart:LinearAxis Orientation="Y" Title="Score in %" FontSize="20"  Minimum="0" Maximum="100" Interval="10"/>
+                    <chart:LinearAxis Orientation="Y" Title=" % " FontSize="20"  Minimum="0" Maximum="100" Interval="10"/>
 
 
                 </chart:Chart.Axes>
@@ -523,7 +523,7 @@
 
                 <chart:Chart.Axes>
                     <chart:CategoryAxis Orientation="X"  FontSize="15" />
-                    <chart:LinearAxis Orientation="Y" Title="Days" FontSize="20" Minimum="0" Maximum="60" Interval="10"/>
+                    <chart:LinearAxis Orientation="Y" Title=" Days " FontSize="20" Minimum="0" Maximum="60" Interval="10"/>
 
 
                 </chart:Chart.Axes>

@@ -20,9 +20,12 @@ namespace PlantStatusDisplay
     /// </summary>
     public partial class AccidentDurationDisplay : UserControl
     {
-        public AccidentDurationDisplay(DateTime? lastAccidentDate )
+        DateTime? _lastAccidentDate;
+        public AccidentDurationDisplay(DateTime? lastAccidentDate)
         {
             InitializeComponent();
+
+            _lastAccidentDate = lastAccidentDate;
             
             DayTextBlock_1.Text = lastAccidentDate.Value.Day.ToString("D2").Substring(0, 1);
             DayTextBlock_2.Text = lastAccidentDate.Value.Day.ToString("D2").Substring(1, 1);
@@ -53,6 +56,27 @@ namespace PlantStatusDisplay
             DurationTextBlock_2.Text = (DateTime.Now - lastAccidentDate.Value).Days.ToString("D4").Substring(1, 1);
             DurationTextBlock_3.Text = (DateTime.Now - lastAccidentDate.Value).Days.ToString("D4").Substring(2, 1);
             DurationTextBlock_4.Text = (DateTime.Now - lastAccidentDate.Value).Days.ToString("D4").Substring(3, 1);
+        }
+
+        public void Update()
+        {
+            TodayTextBlock_1.Text = DateTime.Now.Day.ToString("D2").Substring(0, 1);
+            TodayTextBlock_2.Text = DateTime.Now.Day.ToString("D2").Substring(1, 1);
+
+            CurMonthTextBlock_1.Text = DateTime.Now.Month.ToString("D2").Substring(0, 1);
+            CurMonthTextBlock_2.Text = DateTime.Now.Month.ToString("D2").Substring(1, 1);
+
+            CurYearTextBlock_1.Text = DateTime.Now.Year.ToString().Substring(0, 1);
+            CurYearTextBlock_2.Text = DateTime.Now.Year.ToString().Substring(1, 1);
+            CurYearTextBlock_3.Text = DateTime.Now.Year.ToString().Substring(2, 1);
+            CurYearTextBlock_4.Text = DateTime.Now.Year.ToString().Substring(3, 1);
+
+
+
+            DurationTextBlock_1.Text = (DateTime.Now - _lastAccidentDate.Value).Days.ToString("D4").Substring(0, 1);
+            DurationTextBlock_2.Text = (DateTime.Now - _lastAccidentDate.Value).Days.ToString("D4").Substring(1, 1);
+            DurationTextBlock_3.Text = (DateTime.Now - _lastAccidentDate.Value).Days.ToString("D4").Substring(2, 1);
+            DurationTextBlock_4.Text = (DateTime.Now - _lastAccidentDate.Value).Days.ToString("D4").Substring(3, 1);
         }
     }
 }

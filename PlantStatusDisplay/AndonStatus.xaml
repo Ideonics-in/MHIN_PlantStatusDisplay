@@ -76,7 +76,7 @@
                         <ColumnDefinition/>
                        
                     </Grid.ColumnDefinitions>
-                                     
+                  <local:LineStatusWidget x:Name="Line_17" Grid.Column="0"/>           
                     <local:LineStatusWidget x:Name="Line_14" Grid.Column="1"/>
                     <local:LineStatusWidget x:Name="Line_7" Grid.Column="2"/>
                     <local:LineStatusWidget x:Name="Line_12" Grid.Column="3"/>
@@ -94,6 +94,7 @@
                         <ColumnDefinition/>
 
                     </Grid.ColumnDefinitions>
+                    <local:LineStatusWidget x:Name="Line_16"  Grid.Column="0" />
                     <local:LineStatusWidget x:Name="Line_2"  Grid.Column="2" />
                     <local:LineStatusWidget x:Name="Line_6"  Grid.Column="3" />
                     <local:LineStatusWidget x:Name="Line_5"  Grid.Column="4" />
