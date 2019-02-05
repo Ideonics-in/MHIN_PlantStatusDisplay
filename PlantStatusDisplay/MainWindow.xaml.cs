@@ -143,10 +143,13 @@ namespace PlantStatusDisplay
 
         private void SlideChange_Elapsed(object sender, ElapsedEventArgs e)
         {
+            
             UserControl uc = Slides.Dequeue();
             BaseGrid.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background, new Action(() =>
             {
-            
+                CustomerComplaintDuration.Update();
+                AccidentDurationDisplay.Update();
+
                 BaseGrid.Children.Clear();
                 BaseGrid.Children.Add(uc);
                 Slides.Enqueue(uc);
